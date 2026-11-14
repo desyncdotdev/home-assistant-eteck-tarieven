@@ -20,19 +20,22 @@
   "entity": {
     "sensor": {
       "fixed_heat_pump_rental": {
-        "name": "Gebruik warmtepomp/afleverset"
+        "name": "Gebruik warmtepomp/afleverset per maand"
       },
       "fixed_metering": {
-        "name": "Meettarief"
+        "name": "Meettarief per maand"
       },
       "fixed_cooling": {
-        "name": "Vaste kosten koude"
+        "name": "Vaste kosten koude per maand"
       },
       "fixed_heating": {
-        "name": "Vaste kosten warmte"
+        "name": "Vaste kosten warmte per maand"
       },
       "fixed_monthly_total": {
-        "name": "Totaal vaste kosten"
+        "name": "Totaal vaste kosten per maand"
+      },
+      "fixed_costs_accumulated": {
+        "name": "Opgebouwde vaste kosten"
       },
       "heating_per_gj": {
         "name": "Tarief ruimteverwarming"

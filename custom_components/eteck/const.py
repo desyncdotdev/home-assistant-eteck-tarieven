@@ -15,10 +15,10 @@ CURRENCY: Final = "EUR"
 FIXED_MONTHLY: Final = "fixed_monthly"
 VARIABLE: Final = "variable"
 
-# Tariff keys allowed in tariffs.yaml, mapped to the unit of the sensor.
+# Tariff keys allowed in tariffs.yaml. The variable ones map to the unit of the
+# sensor, which the Energy dashboard accepts for a price entity.
 FIXED_MONTHLY_KEYS: Final = ("heat_pump_rental", "metering", "cooling", "heating")
 VARIABLE_UNITS: Final = {
     "heating_per_gj": f"{CURRENCY}/GJ",
     "hot_water_per_m3": f"{CURRENCY}/m³",
 }
-UNIT_PER_MONTH: Final = f"{CURRENCY}/month"

@@ -20,19 +20,22 @@
   "entity": {
     "sensor": {
       "fixed_heat_pump_rental": {
-        "name": "Heat pump rental"
+        "name": "Heat pump rental per month"
       },
       "fixed_metering": {
-        "name": "Metering fee"
+        "name": "Metering fee per month"
       },
       "fixed_cooling": {
-        "name": "Fixed costs cooling"
+        "name": "Fixed costs cooling per month"
       },
       "fixed_heating": {
-        "name": "Fixed costs heating"
+        "name": "Fixed costs heating per month"
       },
       "fixed_monthly_total": {
-        "name": "Total fixed costs"
+        "name": "Total fixed costs per month"
+      },
+      "fixed_costs_accumulated": {
+        "name": "Accumulated fixed costs"
       },
       "heating_per_gj": {
         "name": "Heating price"
