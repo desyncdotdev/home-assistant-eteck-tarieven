@@ -34,8 +34,20 @@
       "fixed_monthly_total": {
         "name": "Total fixed costs per month"
       },
+      "fixed_heat_pump_rental_accumulated": {
+        "name": "Accumulated heat pump rental"
+      },
+      "fixed_metering_accumulated": {
+        "name": "Accumulated metering fee"
+      },
+      "fixed_cooling_accumulated": {
+        "name": "Accumulated fixed costs cooling"
+      },
+      "fixed_heating_accumulated": {
+        "name": "Accumulated fixed costs heating"
+      },
       "fixed_costs_accumulated": {
-        "name": "Accumulated fixed costs"
+        "name": "Accumulated total fixed costs"
       },
       "heating_per_gj": {
         "name": "Heating price"
