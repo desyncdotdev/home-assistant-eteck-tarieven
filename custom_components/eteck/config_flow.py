@@ -13,7 +13,7 @@ from homeassistant.helpers.selector import (
     SelectSelectorMode,
 )
 
-from .const import CONF_PROJECT, DOMAIN
+from .const import CONF_PROJECT, CONTRIBUTING_URL, DOMAIN, ISSUE_URL
 from .tariffs import load_projects
 
 
@@ -45,4 +45,8 @@ class EteckConfigFlow(ConfigFlow, domain=DOMAIN):
                     )
                 }
             ),
+            description_placeholders={
+                "issue_url": ISSUE_URL,
+                "contributing_url": CONTRIBUTING_URL,
+            },
         )

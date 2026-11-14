@@ -30,6 +30,8 @@ async def _setup(hass: HomeAssistant) -> MockConfigEntry:
 async def test_config_flow(hass: HomeAssistant):
     result = await hass.config_entries.flow.async_init(DOMAIN, context={"source": SOURCE_USER})
     assert result["type"] is FlowResultType.FORM
+    assert "issues/new?template=tariffs.yml" in result["description_placeholders"]["issue_url"]
+    assert "CONTRIBUTING.md" in result["description_placeholders"]["contributing_url"]
 
     result = await hass.config_entries.flow.async_configure(
         result["flow_id"], {CONF_PROJECT: PROJECT}

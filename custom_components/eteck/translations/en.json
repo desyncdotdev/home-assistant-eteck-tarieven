@@ -4,9 +4,12 @@
     "step": {
       "user": {
         "title": "Eteck Tariffs",
-        "description": "Choose the Eteck project your home is connected to. Is your project missing? You can add it with a pull request.",
+        "description": "Choose the Eteck project your home is connected to.\n\n**Is your project not in the list?** Tariffs are added by the community from the yearly tariff sheet (\"Product- en tarievenblad\") Eteck publishes for your project. Close this window, then either [request your project]({issue_url}) by uploading that PDF, or [add it yourself]({contributing_url}). Your project appears here after the next update of the integration.",
         "data": {
           "project": "Project"
+        },
+        "data_description": {
+          "project": "The name is printed at the top of your tariff sheet."
         }
       }
     },
@@ -16,13 +19,27 @@
   },
   "entity": {
     "sensor": {
-      "fixed_heat_pump_rental": { "name": "Heat pump rental" },
-      "fixed_metering": { "name": "Metering fee" },
-      "fixed_cooling": { "name": "Fixed costs cooling" },
-      "fixed_heating": { "name": "Fixed costs heating" },
-      "fixed_monthly_total": { "name": "Total fixed costs" },
-      "heating_per_gj": { "name": "Heating price" },
-      "hot_water_per_m3": { "name": "Hot water price" }
+      "fixed_heat_pump_rental": {
+        "name": "Heat pump rental"
+      },
+      "fixed_metering": {
+        "name": "Metering fee"
+      },
+      "fixed_cooling": {
+        "name": "Fixed costs cooling"
+      },
+      "fixed_heating": {
+        "name": "Fixed costs heating"
+      },
+      "fixed_monthly_total": {
+        "name": "Total fixed costs"
+      },
+      "heating_per_gj": {
+        "name": "Heating price"
+      },
+      "hot_water_per_m3": {
+        "name": "Hot water price"
+      }
     }
   },
   "issues": {
