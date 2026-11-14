@@ -1,0 +1,46 @@
+name: Tariffs
+description: Add a project, add a new year, or correct a tariff
+title: "Tariffs: <project> <year>"
+labels: [tariffs]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Prefer to make the change yourself? It is a small YAML edit, see
+        [CONTRIBUTING.md](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/blob/main/CONTRIBUTING.md).
+  - type: input
+    id: project
+    attributes:
+      label: Project name
+      description: Exactly as printed on the tariff sheet.
+      placeholder: Keijzershof en Tuindershof, Pijnacker-Nootdorp
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year
+      placeholder: "2027"
+    validations:
+      required: true
+  - type: textarea
+    id: sheet
+    attributes:
+      label: Tariff sheet (PDF)
+      description: >-
+        Drag the "Product- en tarievenblad" PDF into this field. Tariffs are
+        only added from the official sheet.
+    validations:
+      required: true
+  - type: textarea
+    id: values
+    attributes:
+      label: Values (optional)
+      description: The lines under "Vaste kosten" and "Variabele kosten", including VAT.
+      placeholder: |
+        Gebruik Warmtepomp/Afleverset: 14,88
+        Meettarief: 2,81
+        Vaste kosten Koude: 18,18
+        Vaste kosten Warmte: 51,31
+        Levering ruimteverwarming per GJ: 40,97
+        Opwarming tapwater per m³: 6,88

@@ -7,6 +7,12 @@ All tariffs live in one file:
 You only need the "Product- en tarievenblad" for your project, which you can
 download from the Eteck website or customer portal.
 
+Not comfortable making a pull request? Open a
+[Tariffs issue](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/issues/new?template=tariffs.yml)
+with the PDF attached and a maintainer will add it.
+
+Using an AI agent? Give it the PDF and point it at [AGENTS.md](AGENTS.md).
+
 ```yaml
 keijzershof-en-tuindershof-pijnacker-nootdorp:   # project key
   name: Keijzershof en Tuindershof, Pijnacker-Nootdorp
@@ -47,7 +53,9 @@ If your sheet has a line under "Vaste kosten" or "Variabele kosten" that is not
 in this table, open an issue (attach the sheet) or add the key to `const.py`,
 `translations/*.json` and this table.
 
-When adding a new project, also add it to the table in `README.md`.
+Also update the project table in `README.md` (new row for a new project, the
+years column for a new year). Attach the PDF to your pull request so the values
+can be checked.
 
 Run `mise run test` to validate the file; CI runs the same check on your pull
 request.
