@@ -40,13 +40,26 @@ for are created.
 
 | Sensor | Unit | Tariff sheet |
 | --- | --- | --- |
-| Heat pump rental | EUR/month | Gebruik Warmtepomp/Afleverset |
-| Metering fee | EUR/month | Meettarief |
-| Fixed costs cooling | EUR/month | Vaste kosten Koude |
-| Fixed costs heating | EUR/month | Vaste kosten Warmte |
-| Total fixed costs | EUR/month | Sum of the above |
+| Heat pump rental per month | EUR | Gebruik Warmtepomp/Afleverset |
+| Metering fee per month | EUR | Meettarief |
+| Fixed costs cooling per month | EUR | Vaste kosten Koude |
+| Fixed costs heating per month | EUR | Vaste kosten Warmte |
+| Total fixed costs per month | EUR | Sum of the above |
+| Accumulated fixed costs | EUR | The fixed costs charged so far |
 | Heating price | EUR/GJ | Levering ruimteverwarming per GJ |
 | Hot water price | EUR/m³ | Opwarming tapwater per m³ |
+
+## Cost calculations
+
+- **Heating price** and **Hot water price** can be picked in the Energy
+  dashboard as *Use an entity with current price* for your heat meter and your
+  hot water meter. Home Assistant converts the price if your heat meter reports
+  in kWh or MJ instead of GJ.
+- **Accumulated fixed costs** is a running total in EUR. It starts at 0 when you
+  add the integration and grows every hour by that hour's share of the monthly
+  fixed costs, so each calendar month adds exactly the monthly total. Time that
+  Home Assistant was not running is caught up on start. Use it in statistics
+  cards, utility meters and templates.
 
 The sensors follow the calendar year and switch to the new tariffs on 1 January.
 If the new year has not been added yet, the latest known tariffs stay in use,
