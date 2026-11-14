@@ -9,7 +9,7 @@ from homeassistant.exceptions import ConfigEntryError
 from homeassistant.helpers import issue_registry as ir
 from homeassistant.util import dt as dt_util
 
-from .const import CONF_PROJECT, DOMAIN
+from .const import CONF_PROJECT, CONTRIBUTING_URL, DOMAIN
 from .tariffs import Project, load_projects
 
 PLATFORMS = [Platform.SENSOR]
@@ -39,9 +39,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: EteckConfigEntry) -> boo
                 "year": str(year),
                 "used_year": str(used),
             },
-            learn_more_url=(
-                "https://github.com/desyncdotdev/home-assistant-eteck-tariffs/blob/main/CONTRIBUTING.md"
-            ),
+            learn_more_url=CONTRIBUTING_URL,
         )
     else:
         ir.async_delete_issue(hass, DOMAIN, issue_id)

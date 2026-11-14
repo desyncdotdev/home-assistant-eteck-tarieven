@@ -4,9 +4,12 @@
     "step": {
       "user": {
         "title": "Eteck Tarieven",
-        "description": "Kies het Eteck-project waarop je woning is aangesloten. Staat je project er niet bij? Je kunt het toevoegen met een pull request.",
+        "description": "Kies het Eteck-project waarop je woning is aangesloten.\n\n**Staat je project niet in de lijst?** Tarieven worden door de community toegevoegd op basis van het product- en tarievenblad dat Eteck elk jaar voor je project publiceert. Sluit dit venster en [vraag je project aan]({issue_url}) door die pdf te uploaden, of [voeg het zelf toe]({contributing_url}). Je project staat hier na de volgende update van de integratie.",
         "data": {
           "project": "Project"
+        },
+        "data_description": {
+          "project": "De naam staat bovenaan je tarievenblad."
         }
       }
     },
@@ -16,13 +19,27 @@
   },
   "entity": {
     "sensor": {
-      "fixed_heat_pump_rental": { "name": "Gebruik warmtepomp/afleverset" },
-      "fixed_metering": { "name": "Meettarief" },
-      "fixed_cooling": { "name": "Vaste kosten koude" },
-      "fixed_heating": { "name": "Vaste kosten warmte" },
-      "fixed_monthly_total": { "name": "Totaal vaste kosten" },
-      "heating_per_gj": { "name": "Tarief ruimteverwarming" },
-      "hot_water_per_m3": { "name": "Tarief opwarming tapwater" }
+      "fixed_heat_pump_rental": {
+        "name": "Gebruik warmtepomp/afleverset"
+      },
+      "fixed_metering": {
+        "name": "Meettarief"
+      },
+      "fixed_cooling": {
+        "name": "Vaste kosten koude"
+      },
+      "fixed_heating": {
+        "name": "Vaste kosten warmte"
+      },
+      "fixed_monthly_total": {
+        "name": "Totaal vaste kosten"
+      },
+      "heating_per_gj": {
+        "name": "Tarief ruimteverwarming"
+      },
+      "hot_water_per_m3": {
+        "name": "Tarief opwarming tapwater"
+      }
     }
   },
   "issues": {

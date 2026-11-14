@@ -6,6 +6,10 @@ DOMAIN: Final = "eteck"
 
 CONF_PROJECT: Final = "project"
 
+REPO_URL: Final = "https://github.com/desyncdotdev/home-assistant-eteck-tariffs"
+ISSUE_URL: Final = f"{REPO_URL}/issues/new?template=tariffs.yml"
+CONTRIBUTING_URL: Final = f"{REPO_URL}/blob/main/CONTRIBUTING.md"
+
 CURRENCY: Final = "EUR"
 
 FIXED_MONTHLY: Final = "fixed_monthly"
