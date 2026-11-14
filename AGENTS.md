@@ -34,7 +34,7 @@ This is the most common change. Follow these steps in order.
 
    b. **Issue.** Open an issue with the "Tariffs" template
       (`gh issue create --template tariffs.yml`, or give the user the link
-      https://github.com/desyncdotdev/home-assistant-eteck-tarieven/issues/new?template=tariffs.yml).
+      https://github.com/desyncdotdev/home-assistant-eteck-tariffs/issues/new?template=tariffs.yml).
       Fill in the project name, year and all values from the sheet, and ask the
       user to attach the PDF to the issue in the browser.
 

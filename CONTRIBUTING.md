@@ -8,7 +8,7 @@ You only need the "Product- en tarievenblad" for your project, which you can
 download from the Eteck website or customer portal.
 
 Not comfortable making a pull request? Open a
-[Tariffs issue](https://github.com/desyncdotdev/home-assistant-eteck-tarieven/issues/new?template=tariffs.yml)
+[Tariffs issue](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/issues/new?template=tariffs.yml)
 with the PDF attached and a maintainer will add it.
 
 Using an AI agent? Give it the PDF and point it at [AGENTS.md](AGENTS.md).

@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Prefer to make the change yourself? It is a small YAML edit, see
-        [CONTRIBUTING.md](https://github.com/desyncdotdev/home-assistant-eteck-tarieven/blob/main/CONTRIBUTING.md).
+        [CONTRIBUTING.md](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/blob/main/CONTRIBUTING.md).
   - type: input
     id: project
     attributes:
