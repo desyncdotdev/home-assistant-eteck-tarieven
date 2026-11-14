@@ -1,8 +1,9 @@
 {
+  "title": "Eteck Tariffs",
   "config": {
     "step": {
       "user": {
-        "title": "Eteck",
+        "title": "Eteck Tariffs",
         "description": "Choose the Eteck project your home is connected to. Is your project missing? You can add it with a pull request.",
         "data": {
           "project": "Project"
