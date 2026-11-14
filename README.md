@@ -1,3 +1,7 @@
+<p align="center">
+   <img width="982" height="337" alt="afbeelding" src="https://github.com/user-attachments/assets/082676dc-0fbb-4a5a-a1c7-ba44ccb684d1" />
+</p>
+
 # Eteck for Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
