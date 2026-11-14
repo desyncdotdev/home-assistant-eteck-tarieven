@@ -1,0 +1,33 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Eteck",
+        "description": "Kies het Eteck-project waarop je woning is aangesloten. Staat je project er niet bij? Je kunt het toevoegen met een pull request.",
+        "data": {
+          "project": "Project"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Dit project is al geconfigureerd."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "fixed_heat_pump_rental": { "name": "Gebruik warmtepomp/afleverset" },
+      "fixed_metering": { "name": "Meettarief" },
+      "fixed_cooling": { "name": "Vaste kosten koude" },
+      "fixed_heating": { "name": "Vaste kosten warmte" },
+      "fixed_monthly_total": { "name": "Totaal vaste kosten" },
+      "heating_per_gj": { "name": "Tarief ruimteverwarming" },
+      "hot_water_per_m3": { "name": "Tarief opwarming tapwater" }
+    }
+  },
+  "issues": {
+    "outdated_tariffs": {
+      "title": "Eteck-tarieven voor {year} ontbreken",
+      "description": "Er zijn nog geen tarieven van {year} voor {project}, dus de tarieven van {used_year} worden gebruikt. Werk de integratie bij, of voeg de nieuwe tarieven toe met een pull request."
+    }
+  }
+}

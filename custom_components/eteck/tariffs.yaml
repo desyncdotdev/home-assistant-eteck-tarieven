@@ -1,0 +1,34 @@
+# Eteck tariffs per project, per year. All amounts in EUR including VAT (btw),
+# taken from the "Product- en tarievenblad" Eteck publishes for each project.
+#
+# To add a project or a new year, see CONTRIBUTING.md. In short:
+#   - project key: the project name in lowercase, spaces replaced by "-",
+#     other punctuation dropped
+#   - name: the project name exactly as printed on the tariff sheet
+#   - years: one entry per calendar year
+#       fixed_monthly: costs per month    (section "Vaste kosten")
+#       variable:      costs per unit     (section "Variabele kosten")
+#   - leave out "Overige kosten"
+#
+# Allowed keys:
+#   fixed_monthly:
+#     heat_pump_rental   Gebruik Warmtepomp/Afleverset
+#     metering           Meettarief
+#     cooling            Vaste kosten Koude
+#     heating            Vaste kosten Warmte
+#   variable:
+#     heating_per_gj     Levering ruimteverwarming per GJ
+#     hot_water_per_m3   Opwarming tapwater per m³
+
+keijzershof-en-tuindershof-pijnacker-nootdorp:
+  name: Keijzershof en Tuindershof, Pijnacker-Nootdorp
+  years:
+    2026:
+      fixed_monthly:
+        heat_pump_rental: 14.88
+        metering: 2.81
+        cooling: 18.18
+        heating: 51.31
+      variable:
+        heating_per_gj: 40.97
+        hot_water_per_m3: 6.88

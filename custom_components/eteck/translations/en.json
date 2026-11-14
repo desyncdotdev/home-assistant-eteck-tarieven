@@ -1,0 +1,33 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Eteck",
+        "description": "Choose the Eteck project your home is connected to. Is your project missing? You can add it with a pull request.",
+        "data": {
+          "project": "Project"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This project is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "fixed_heat_pump_rental": { "name": "Heat pump rental" },
+      "fixed_metering": { "name": "Metering fee" },
+      "fixed_cooling": { "name": "Fixed costs cooling" },
+      "fixed_heating": { "name": "Fixed costs heating" },
+      "fixed_monthly_total": { "name": "Total fixed costs" },
+      "heating_per_gj": { "name": "Heating price" },
+      "hot_water_per_m3": { "name": "Hot water price" }
+    }
+  },
+  "issues": {
+    "outdated_tariffs": {
+      "title": "Eteck tariffs for {year} are missing",
+      "description": "There are no {year} tariffs yet for {project}, so the tariffs of {used_year} are used. Update the integration, or add the new tariffs with a pull request."
+    }
+  }
+}
