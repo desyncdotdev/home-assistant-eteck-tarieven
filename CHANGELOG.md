@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/compare/v0.1.0...v0.2.0) (2026-11-14)
+
+
+### Features
+
+* accumulated fixed costs sensor and monthly amounts in EUR ([#8](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/issues/8)) ([d012b02](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/commit/d012b02a4c8e48629086d07d5d9e2a43f1fbdc02))
+* accumulated sensor for every fixed cost ([#10](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/issues/10)) ([a586a79](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/commit/a586a798b7de4f89b23ba4acff475594c10c60ab))
+
 ## [0.1.0](https://github.com/desyncdotdev/home-assistant-eteck-tariffs/compare/v0.0.1...v0.1.0) (2026-11-14)
 
 
