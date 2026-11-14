@@ -44,10 +44,10 @@ jobs:
       - name: Build the zip
         run: |
           cd custom_components/eteck
-          zip -r "${GITHUB_WORKSPACE}/eteck.zip" . -x "__pycache__/*"
+          zip -r "${GITHUB_WORKSPACE}/eteck-tariffs.zip" . -x "__pycache__/*"
 
       - name: Upload the zip
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ needs.release-please.outputs.tag_name }}
-        run: gh release upload "${TAG}" eteck.zip --repo "${GITHUB_REPOSITORY}"
+        run: gh release upload "${TAG}" eteck-tariffs.zip --repo "${GITHUB_REPOSITORY}"
