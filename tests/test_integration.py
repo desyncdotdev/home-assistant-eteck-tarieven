@@ -72,12 +72,21 @@ async def test_sensors(hass: HomeAssistant):
         assert state.attributes["tariff_year"] == 2026
         assert state.attributes.get("device_class") == ("monetary" if unit == "EUR" else None)
 
-    accumulated = hass.states.get(f"{PREFIX}_accumulated_fixed_costs")
-    assert accumulated.state == "0.0"
-    assert accumulated.attributes["unit_of_measurement"] == "EUR"
-    assert accumulated.attributes["device_class"] == "monetary"
-    assert accumulated.attributes["state_class"] == "total"
-    assert len(hass.states.async_all("sensor")) == len(expected) + 1
+    accumulated = (
+        "heat_pump_rental",
+        "metering_fee",
+        "fixed_costs_cooling",
+        "fixed_costs_heating",
+        "total_fixed_costs",
+    )
+    for name in accumulated:
+        state = hass.states.get(f"{PREFIX}_accumulated_{name}")
+        assert state is not None, name
+        assert state.state == "0.0"
+        assert state.attributes["unit_of_measurement"] == "EUR"
+        assert state.attributes["device_class"] == "monetary"
+        assert state.attributes["state_class"] == "total"
+    assert len(hass.states.async_all("sensor")) == len(expected) + len(accumulated)
     assert not ir.async_get(hass).issues
 
 
@@ -121,13 +130,17 @@ async def test_fixed_costs_between(hass: HomeAssistant):
     spanning = fixed_costs_between(project, _local(2026, 6, 16), _local(2026, 8, 1))
     assert spanning == pytest.approx(87.18 * 1.5)
     assert fixed_costs_between(project, _local(2026, 6, 2), _local(2026, 6, 1)) == 0
+    # A single cost, and one the project does not have.
+    june = (_local(2026, 6, 1), _local(2026, 7, 1))
+    assert fixed_costs_between(project, *june, lambda t: t.fixed_monthly.get("cooling")) == 18.18
+    assert fixed_costs_between(project, *june, lambda t: t.fixed_monthly.get("nope")) == 0
 
 
 async def test_accumulates_every_hour(hass: HomeAssistant, freezer):
     await hass.config.async_set_time_zone("Europe/Amsterdam")
     freezer.move_to(_local(2026, 6, 1, 0, 0, 0))
     await _setup(hass)
-    entity_id = f"{PREFIX}_accumulated_fixed_costs"
+    entity_id = f"{PREFIX}_accumulated_total_fixed_costs"
     assert hass.states.get(entity_id).state == "0.0"
 
     for hour in (1, 2):
@@ -135,6 +148,8 @@ async def test_accumulates_every_hour(hass: HomeAssistant, freezer):
         async_fire_time_changed(hass, _local(2026, 6, 1, hour, 0, 0))
         await hass.async_block_till_done()
     assert float(hass.states.get(entity_id).state) == pytest.approx(87.18 / 30 / 24 * 2, abs=1e-4)
+    cooling = hass.states.get(f"{PREFIX}_accumulated_fixed_costs_cooling")
+    assert float(cooling.state) == pytest.approx(18.18 / 30 / 24 * 2, abs=1e-4)
 
 
 async def test_accumulated_costs_survive_a_restart(hass: HomeAssistant, freezer):
@@ -142,12 +157,12 @@ async def test_accumulated_costs_survive_a_restart(hass: HomeAssistant, freezer)
     freezer.move_to(_local(2026, 7, 1, 0, 0, 0))
     stored = {"value": 100.0, "until": _local(2026, 6, 1, 0, 0, 0).isoformat()}
     mock_restore_cache_with_extra_data(
-        hass, [(State(f"{PREFIX}_accumulated_fixed_costs", "100.0"), stored)]
+        hass, [(State(f"{PREFIX}_accumulated_total_fixed_costs", "100.0"), stored)]
     )
     await _setup(hass)
 
     # Continues from the stored value and catches up on the month it missed.
-    state = hass.states.get(f"{PREFIX}_accumulated_fixed_costs")
+    state = hass.states.get(f"{PREFIX}_accumulated_total_fixed_costs")
     assert float(state.state) == pytest.approx(187.18)
 
 

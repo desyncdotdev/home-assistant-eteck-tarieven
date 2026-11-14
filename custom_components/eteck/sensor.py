@@ -46,7 +46,17 @@ async def async_setup_entry(
         entities.append(
             EteckTariffSensor(project, TOTAL, CURRENCY, lambda t: t.fixed_monthly_total)
         )
-        entities.append(EteckAccumulatedFixedCostsSensor(project))
+        entities.extend(
+            EteckAccumulatedSensor(
+                project,
+                f"fixed_{key}_accumulated",
+                lambda tariffs, key=key: tariffs.fixed_monthly.get(key),
+            )
+            for key in sorted(fixed)
+        )
+        entities.append(
+            EteckAccumulatedSensor(project, ACCUMULATED, lambda t: t.fixed_monthly_total)
+        )
     entities.extend(
         EteckTariffSensor(
             project,
@@ -124,7 +134,12 @@ def _next_month(moment: datetime) -> datetime:
     return (first + timedelta(days=32)).replace(day=1)
 
 
-def fixed_costs_between(project: Project, start: datetime, end: datetime) -> float:
+def fixed_costs_between(
+    project: Project,
+    start: datetime,
+    end: datetime,
+    monthly_fn: Callable[[YearTariffs], float | None] = lambda t: t.fixed_monthly_total,
+) -> float:
     """Return the fixed costs for a period, charging every month pro rata."""
     start, end = dt_util.as_local(start), dt_util.as_local(end)
     costs = 0.0
@@ -132,7 +147,7 @@ def fixed_costs_between(project: Project, start: datetime, end: datetime) -> flo
         month_end = _next_month(start)
         month_start = month_end.replace(day=1, month=start.month, year=start.year)
         until = min(end, month_end)
-        monthly = project.tariffs_for(start.year).fixed_monthly_total
+        monthly = monthly_fn(project.tariffs_for(start.year)) or 0.0
         costs += monthly * (until - start) / (month_end - month_start)
         start = until
     return costs
@@ -150,26 +165,32 @@ class AccumulatedData(ExtraStoredData):
         return {"value": self.value, "until": self.until.isoformat()}
 
 
-class EteckAccumulatedFixedCostsSensor(RestoreEntity, SensorEntity):
-    """The fixed costs paid so far, growing a little every hour.
+class EteckAccumulatedSensor(RestoreEntity, SensorEntity):
+    """A fixed cost paid so far, growing a little every hour.
 
     A total in EUR is what the Energy dashboard needs to track costs.
     """
 
     _attr_has_entity_name = True
     _attr_should_poll = False
-    _attr_translation_key = ACCUMULATED
     _attr_device_class = SensorDeviceClass.MONETARY
     _attr_state_class = SensorStateClass.TOTAL
     _attr_native_unit_of_measurement = CURRENCY
     _attr_suggested_display_precision = 2
 
-    def __init__(self, project: Project) -> None:
+    def __init__(
+        self,
+        project: Project,
+        key: str,
+        monthly_fn: Callable[[YearTariffs], float | None],
+    ) -> None:
         """Initialize the sensor."""
         self._project = project
+        self._monthly_fn = monthly_fn
+        self._attr_translation_key = key
         self._value = 0.0
         self._until = dt_util.utcnow()
-        self._attr_unique_id = f"{project.key}_{ACCUMULATED}"
+        self._attr_unique_id = f"{project.key}_{key}"
         self._attr_device_info = _device_info(project)
 
     @property
@@ -185,7 +206,7 @@ class EteckAccumulatedFixedCostsSensor(RestoreEntity, SensorEntity):
     @callback
     def _accumulate(self) -> None:
         now = dt_util.utcnow()
-        self._value += fixed_costs_between(self._project, self._until, now)
+        self._value += fixed_costs_between(self._project, self._until, now, self._monthly_fn)
         self._until = now
 
     async def async_added_to_hass(self) -> None:

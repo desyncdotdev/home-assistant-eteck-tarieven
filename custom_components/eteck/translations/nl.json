@@ -34,8 +34,20 @@
       "fixed_monthly_total": {
         "name": "Totaal vaste kosten per maand"
       },
+      "fixed_heat_pump_rental_accumulated": {
+        "name": "Opgebouwd gebruik warmtepomp/afleverset"
+      },
+      "fixed_metering_accumulated": {
+        "name": "Opgebouwd meettarief"
+      },
+      "fixed_cooling_accumulated": {
+        "name": "Opgebouwde vaste kosten koude"
+      },
+      "fixed_heating_accumulated": {
+        "name": "Opgebouwde vaste kosten warmte"
+      },
       "fixed_costs_accumulated": {
-        "name": "Opgebouwde vaste kosten"
+        "name": "Opgebouwde totale vaste kosten"
       },
       "heating_per_gj": {
         "name": "Tarief ruimteverwarming"
