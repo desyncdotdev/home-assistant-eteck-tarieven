@@ -1,11 +1,14 @@
 name: Release Please
 
+# Merging the release PR tags the release; the zip HACS downloads (hacs.json) is then added to
+# it, so downloads are counted per release.
 on:
   push:
     branches: [main]
 
 permissions: {}
 
+# One run at a time, so a release gets its zip before the next push is looked at.
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
@@ -17,5 +20,34 @@ jobs:
     permissions:
       contents: write # create the release and tag
       pull-requests: write # open and update the release PR
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        id: release
+
+  zip:
+    name: Add the zip to the release
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    permissions:
+      contents: write # upload the release asset
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
+          persist-credentials: false
+
+      - name: Build the zip
+        run: |
+          cd custom_components/eteck
+          zip -r "${GITHUB_WORKSPACE}/eteck.zip" . -x "__pycache__/*"
+
+      - name: Upload the zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.release-please.outputs.tag_name }}
+        run: gh release upload "${TAG}" eteck.zip --repo "${GITHUB_REPOSITORY}"
