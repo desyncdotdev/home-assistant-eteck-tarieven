@@ -40,7 +40,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: EteckConfigEntry) -> boo
                 "used_year": str(used),
             },
             learn_more_url=(
-                "https://github.com/desyncdotdev/home-assistant-eteck-tarieven/blob/main/CONTRIBUTING.md"
+                "https://github.com/desyncdotdev/home-assistant-eteck-tariffs/blob/main/CONTRIBUTING.md"
             ),
         )
     else:

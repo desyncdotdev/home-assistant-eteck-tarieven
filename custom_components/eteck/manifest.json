@@ -1,14 +1,14 @@
 {
   "domain": "eteck",
-  "name": "Eteck",
+  "name": "Eteck Tariffs",
   "codeowners": [
     "@thijsdejong"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/desyncdotdev/home-assistant-eteck-tarieven",
+  "documentation": "https://github.com/desyncdotdev/home-assistant-eteck-tariffs",
   "integration_type": "service",
   "iot_class": "calculated",
-  "issue_tracker": "https://github.com/desyncdotdev/home-assistant-eteck-tarieven/issues",
+  "issue_tracker": "https://github.com/desyncdotdev/home-assistant-eteck-tariffs/issues",
   "requirements": [],
   "version": "0.0.1"
 }

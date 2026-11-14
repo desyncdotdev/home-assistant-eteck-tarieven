@@ -1,8 +1,9 @@
 {
+  "title": "Eteck Tarieven",
   "config": {
     "step": {
       "user": {
-        "title": "Eteck",
+        "title": "Eteck Tarieven",
         "description": "Kies het Eteck-project waarop je woning is aangesloten. Staat je project er niet bij? Je kunt het toevoegen met een pull request.",
         "data": {
           "project": "Project"

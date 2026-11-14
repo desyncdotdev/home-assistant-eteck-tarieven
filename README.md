@@ -2,7 +2,7 @@
    <img width="982" height="337" alt="Ye-KVuzPoajF21V9" src="https://github.com/user-attachments/assets/fc7beb22-de58-4d44-b06a-3e9e17d99f61" />
 </p>
 
-# Eteck for Home Assistant
+# Eteck Tariffs for Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
 
@@ -28,10 +28,10 @@ Is your project or a new year missing? Adding it is a small YAML change, see
 ## Installation
 
 1. In HACS, open the menu → **Custom repositories**, add
-   `https://github.com/desyncdotdev/home-assistant-eteck-tarieven` with type **Integration**.
-2. Install **Eteck** and restart Home Assistant.
+   `https://github.com/desyncdotdev/home-assistant-eteck-tariffs` with type **Integration**.
+2. Install **Eteck Tariffs** and restart Home Assistant.
 3. Go to **Settings → Devices & services → Add integration**, search for
-   **Eteck** and choose your project.
+   **Eteck Tariffs** and choose your project.
 
 ## Sensors
 
