@@ -1,4 +1,4 @@
-"""The Eteck integration: fixed tariffs of Eteck heat networks as sensors."""
+"""The Eteck integration: tariffs of Eteck heat networks as sensors."""
 
 from __future__ import annotations
 
