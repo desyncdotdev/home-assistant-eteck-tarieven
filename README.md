@@ -1,5 +1,5 @@
 <p align="center">
-   <img width="982" height="337" alt="afbeelding" src="https://github.com/user-attachments/assets/082676dc-0fbb-4a5a-a1c7-ba44ccb684d1" />
+   <img width="982" height="337" alt="Ye-KVuzPoajF21V9" src="https://github.com/user-attachments/assets/fc7beb22-de58-4d44-b06a-3e9e17d99f61" />
 </p>
 
 # Eteck for Home Assistant
