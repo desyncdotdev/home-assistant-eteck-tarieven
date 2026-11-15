@@ -1,6 +1,9 @@
 {
   "domain": "eteck",
   "name": "Eteck Tariffs",
+  "categories": [
+    "energy.energy_prices"
+  ],
   "codeowners": [
     "@thijsdejong"
   ],
